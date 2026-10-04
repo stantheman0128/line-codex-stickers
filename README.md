@@ -1,3 +1,7 @@
+[![LINE sticker Codex demo](https://img.youtube.com/vi/AkS2YYPjGVs/maxresdefault.jpg)](https://www.youtube.com/watch?v=AkS2YYPjGVs)
+
+Demo: https://youtu.be/AkS2YYPjGVs
+
 # line-codex-stickers
 
 Codex desktop composer button for LINE stickers.
