@@ -1,0 +1,13 @@
+{
+  "source": "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.928.4866.0_x64__2p2nqsd0c76g0\\app\\resources\\app.asar",
+  "sourceSHA256": "84fe697418b26a921f8d14090616559498a02f51768ff0bba69cefaadf4086f5",
+  "patched": "C:\\Users\\stans\\Documents\\Codex\\2026-10-04\\x20-integrate-line-line-line-integrate\\outputs\\codex-line-stickers\\app.asar",
+  "patchedSHA256": "022d9613236d70081ca61299c9e438bf25c5190686d74b4930aa8a1e301a2d6d",
+  "version": "26.928.40906",
+  "entry": "webview/assets/app-primary-2b539a729a98.js",
+  "originalModuleSHA256": "2c5259d8c72b2b7f3c437c372bdbad340357156036ca02d6e92caa5c08e55b29",
+  "patchedModuleSHA256": "170f5fc7d5f76f919c72dea9a7d1832a7edaac8820e609726f37f7fc8cf7b748",
+  "injectionSHA256": "d90df40101cc2756d1c4abe660411a6c83fa7ad4cf453100cf774c1d9bac21ab",
+  "installed": false,
+  "runtimeVerified": false
+}

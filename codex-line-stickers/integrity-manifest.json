@@ -1,0 +1,10 @@
+{
+  "exe": "C:\\Users\\stans\\Documents\\Codex\\2026-10-04\\x20-integrate-line-line-line-integrate\\outputs\\codex-line-stickers\\app\\ChatGPT.exe",
+  "beforeSHA256": "c11cdd4ed0e0f25eddc1d54035e7b87932f07ac6b011ced04d424e368fedb9a0",
+  "afterSHA256": "41ded6f68fe0b2a7b681951de12eff4f8521df023fb82f5bbb7fb3c206ca20d3",
+  "originalHeaderSHA256": "1e596e41423edb250a8a489763865064cff2d59a96a636758acd0df9fc63d0ba",
+  "patchedHeaderSHA256": "69eb3f09093cabd1db9fd5b1a198c75f45a52dc62695bebfd87eff0f258eb821",
+  "fusesChanged": false,
+  "signature": "Original vendor signature no longer validates on modified clone",
+  "originalInstalledFilesModified": false
+}

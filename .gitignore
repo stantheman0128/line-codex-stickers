@@ -1,0 +1,12 @@
+app/
+*.exe
+*.asar
+*.dll
+*.png
+*.apng
+*.gif
+*.webp
+*.linepack
+sticker-assets/
+rollback-v1/
+update-v2/
