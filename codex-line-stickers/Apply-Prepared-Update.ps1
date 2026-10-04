@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
-$stage = Join-Path $PSScriptRoot 'update-v2'
-$marker = Join-Path $PSScriptRoot 'applied-v2.json'
+$stage = Join-Path $PSScriptRoot 'update-v7'
+$marker = Join-Path $PSScriptRoot 'applied-v7.json'
 if (!(Test-Path -LiteralPath (Join-Path $stage 'manifest.json'))) { return }
 $manifest = Get-Content -LiteralPath (Join-Path $stage 'manifest.json') -Raw | ConvertFrom-Json
 if (Test-Path -LiteralPath $marker) {
@@ -19,7 +19,7 @@ if (@(Get-CimInstance Win32_Process -Filter "Name='ChatGPT.exe'").Count -gt 0) {
 $appRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot 'app'))
 $exe = Join-Path $appRoot 'ChatGPT.exe'
 $asar = Join-Path $appRoot 'resources\app.asar'
-$backup = Join-Path $PSScriptRoot 'rollback-v1'
+$backup = Join-Path $PSScriptRoot 'rollback-before-v7'
 foreach ($item in @(@('ChatGPT.exe',$manifest.exeSHA256),@('app.asar',$manifest.asarSHA256))) {
     $hash = (Get-FileHash -LiteralPath (Join-Path $stage $item[0]) -Algorithm SHA256).Hash
     if ($hash -ine $item[1]) { throw ('Prepared update hash mismatch: ' + $item[0]) }
@@ -33,7 +33,7 @@ try {
     if ((Get-FileHash -LiteralPath $asar -Algorithm SHA256).Hash -ine $manifest.asarSHA256) { throw 'Installed archive verification failed.' }
     if ((Get-FileHash -LiteralPath $exe -Algorithm SHA256).Hash -ine $manifest.exeSHA256) { throw 'Installed executable verification failed.' }
     $manifest | ConvertTo-Json | Set-Content -LiteralPath $marker -Encoding utf8
-    Write-Host 'Prepared LINE composer v2 update applied.'
+    Write-Host 'Prepared LINE composer v7 update applied.'
 } catch {
     Copy-Item -LiteralPath (Join-Path $backup 'app.asar') -Destination $asar -Force
     Copy-Item -LiteralPath (Join-Path $backup 'ChatGPT.exe') -Destination $exe -Force

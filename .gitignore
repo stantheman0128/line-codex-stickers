@@ -10,3 +10,7 @@ app/
 sticker-assets/
 rollback-v1/
 update-v2/
+update-v*/
+rollback-before-*/
+applied-v*.json
+
