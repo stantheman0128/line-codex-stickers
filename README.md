@@ -1,6 +1,4 @@
-[![LINE sticker Codex demo](https://img.youtube.com/vi/AkS2YYPjGVs/maxresdefault.jpg)](https://www.youtube.com/watch?v=AkS2YYPjGVs)
-
-Demo: https://youtu.be/AkS2YYPjGVs
+https://github.com/user-attachments/assets/a2984771-eaf1-4cbf-a327-d3ccc290f1af
 
 # line-codex-stickers
 
