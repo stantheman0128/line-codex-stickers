@@ -14,3 +14,9 @@ update-v*/
 rollback-before-*/
 applied-v*.json
 
+
+# Local runtime, evidence, profiles and machine-specific instructions
+/work/
+/outputs/
+/.local/
+/AGENTS.md

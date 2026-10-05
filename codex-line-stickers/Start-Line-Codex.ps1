@@ -1,6 +1,12 @@
 param([switch]$Admitted, [switch]$ValidateOnly)
 $ErrorActionPreference = 'Stop'
-$workPath = Join-Path (Split-Path -Parent (Split-Path -Parent $PSScriptRoot)) 'work'
+$projectRoot = Split-Path -Parent $PSScriptRoot
+$workPath = Join-Path $projectRoot 'work'
+$runtimeRoot = $PSScriptRoot
+$localRuntime = Join-Path $projectRoot 'outputs\codex-line-stickers'
+if (Test-Path -LiteralPath (Join-Path $localRuntime 'app\ChatGPT.exe') -PathType Leaf) {
+    $runtimeRoot = $localRuntime
+}
 $launchLog = Join-Path $workPath 'line-launcher.log'
 function Write-LaunchLog([string]$Message) {
     if (!$ValidateOnly) {
@@ -13,8 +19,8 @@ trap {
     throw $_
 }
 Write-LaunchLog ('entered admitted=' + $Admitted)
-$appPath = Join-Path $PSScriptRoot 'app\ChatGPT.exe'
-$sentinelPath = 'C:\Users\stans\Projects\resource-sentinel\scripts\invoke-sentinel.ps1'
+$appPath = Join-Path $runtimeRoot 'app\ChatGPT.exe'
+$sentinelPath = Join-Path ([Environment]::GetFolderPath('UserProfile')) 'Projects\resource-sentinel\scripts\invoke-sentinel.ps1'
 if (!(Test-Path -LiteralPath $appPath) -or !(Test-Path -LiteralPath $sentinelPath)) {
     throw 'The modified app or Resource Sentinel launcher is missing.'
 }
@@ -28,7 +34,7 @@ if (!(Test-Path -LiteralPath (Join-Path $profilePath 'Local State') -PathType Le
 }
 $activeApps = @(Get-CimInstance Win32_Process -Filter "Name='ChatGPT.exe'")
 if ($ValidateOnly) {
-    [pscustomobject]@{App=$appPath;Profile=$profilePath;RunningAppProcesses=$activeApps.Count;LaunchPerformed=$false}
+    [pscustomobject]@{App=$appPath;Profile=$profilePath;Work=$workPath;RuntimeRoot=$runtimeRoot;RunningAppProcesses=$activeApps.Count;LaunchPerformed=$false}
     return
 }
 if ($activeApps.Count -gt 0) {
@@ -42,7 +48,7 @@ if (!$Admitted) {
 }
 $savedProfile = $env:CODEX_ELECTRON_USER_DATA_PATH
 try {
-    & (Join-Path $PSScriptRoot 'Apply-Prepared-Update.ps1')
+    & (Join-Path $runtimeRoot 'Apply-Prepared-Update.ps1')
     $env:CODEX_ELECTRON_USER_DATA_PATH = $profilePath
     Write-LaunchLog ('starting app=' + $appPath + ' profile=' + $profilePath)
     # Both switches refer to the same profile. Do not copy credentials or override CODEX_HOME.
